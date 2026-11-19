@@ -1,0 +1,1161 @@
+# MASTER PROMPT: DIAMOND STORE E-COMMERCE PLATFORM
+
+## 1. PROJECT OVERVIEW
+
+Build a complete, professional, production-oriented e-commerce platform called **DIAMOND STORE**.
+
+This must be a fully functional online fashion store with two integrated systems:
+
+1. A public-facing e-commerce website for customers.
+2. A secure, comprehensive Admin Dashboard for managing the entire business.
+
+Do not build just a frontend demonstration, static template, or dashboard mockup. Build a real application with persistent database storage, working authentication, functional forms, server-side business logic, payment integration, and properly protected administrative routes.
+
+The customer website and Admin Dashboard must use the same database. Changes made by the administrator must automatically reflect on the public website.
+
+## 2. BUSINESS INFORMATION
+
+Use these business details throughout the application.
+
+- Business Name: Diamond Store
+- Location: Ogbomoso, Oyo State, Nigeria.
+- Business Type: Online fashion and accessories store.
+- Target Customers: Customers in Nigeria and internationally.
+- Main Products:
+  - Men's clothing.
+  - Men's shoes.
+  - Men's fashion accessories.
+- Primary Currency: Nigerian Naira (NGN/₦).
+- Delivery Coverage: Nigeria and worldwide, subject to available delivery arrangements.
+- Delivery Charges: Admin can set and record delivery charges per order. Delivery fees are payable on the delivery day by default.
+- Return Policy: Returns are disabled initially. Super Admin can configure the return policy and conditions later.
+- Logo: Create an elegant text-based DIAMOND STORE wordmark. Do not invent an existing registered logo.
+- Social Media: Initially optional. Admin must be able to add and update social media links from the dashboard.
+
+Do not invent business phone numbers, email addresses, physical street addresses, social media accounts, product prices, or delivery company partnerships.
+
+## 3. TECHNOLOGY STACK
+
+Use the following architecture:
+
+### Frontend
+- Next.js with App Router.
+- React.
+- TypeScript.
+- Tailwind CSS.
+- Lucide icons.
+- Responsive design.
+
+### Backend and Database
+- Supabase PostgreSQL.
+- Supabase Authentication.
+- Supabase Storage.
+- Supabase Row Level Security.
+- Server-side API routes or server actions for sensitive operations.
+
+### Deployment
+- Vercel for hosting.
+- Supabase for production database and authentication.
+- Environment variables for all sensitive credentials.
+
+Use the latest stable versions compatible with one another.
+
+Organize the application using a clean, maintainable folder structure.
+
+Do not place sensitive operations or secret API keys in browser-side code.
+
+If the environment cannot generate a requested component automatically, implement a reliable alternative and explain what remains to be configured.
+
+## 4. BRAND IDENTITY AND DESIGN
+
+Create a premium, elegant, modern men's fashion brand.
+
+### Colour palette
+- Midnight Black: #101820
+- Luxury Gold: #D6B875
+- Ivory: #F7F5F0
+- White: #FFFFFF
+- Neutral Grey: #707782
+
+### Typography
+- Headings: Playfair Display.
+- Body text: Inter.
+- Buttons: Inter SemiBold.
+
+### Design requirements
+- Premium fashion editorial appearance.
+- Beautiful product photography.
+- Spacious layouts.
+- Consistent typography.
+- Elegant navigation.
+- Smooth but subtle animations.
+- Professional product cards.
+- Clean shopping experience.
+- Mobile-first responsive design.
+
+Avoid excessive gradients, unnecessary animations, cluttered layouts, oversized icons, and cheap-looking templates.
+
+Create a consistent design system shared by all customer and administrative pages.
+
+# 5. PUBLIC WEBSITE STRUCTURE
+
+Create the following customer-facing pages.
+
+### A. Homepage — /
+
+The homepage must contain:
+
+**Announcement bar**
+- Promotional announcements.
+- Worldwide delivery information.
+- Admin-controlled messages.
+
+**Header**
+- Diamond Store logo.
+- Home.
+- Shop.
+- Men's Clothing.
+- Shoes.
+- Accessories.
+- About Us.
+- Contact.
+- Search.
+- Customer Account.
+- Shopping Cart.
+
+**Hero section**
+
+Headline:
+
+"DEFINE YOUR STYLE. OWN YOUR CONFIDENCE."
+
+Supporting description:
+
+"Discover premium men's clothing, footwear and accessories, carefully selected to elevate your everyday style."
+
+Buttons:
+- Shop Now.
+- Explore Collections.
+
+Use premium men's fashion photography.
+
+The administrator must be able to update the hero image, headline, description and buttons.
+
+**Shop by Category**
+
+Display:
+- Men's Clothing.
+- Shoes.
+- Accessories.
+
+Allow administrators to add more categories.
+
+**New Arrivals**
+
+Display recently published products.
+
+**Best Sellers**
+
+Display products marked as bestsellers by the administrator.
+
+**Special Offers**
+
+Display products with active discounts.
+
+**Why Shop With Us?**
+
+Include:
+- Quality fashion products.
+- Secure payment options.
+- Delivery across Nigeria.
+- International delivery arrangements.
+- Customer support.
+
+**Newsletter**
+
+Allow customers to subscribe using their email addresses. Store subscriptions securely and provide unsubscribe functionality.
+
+**Footer**
+
+Include:
+- About Diamond Store.
+- Contact information.
+- WhatsApp link, when configured.
+- Social media links.
+- Shipping information.
+- FAQs.
+- Privacy policy.
+- Terms and conditions.
+- Return policy.
+
+### B. Shop Page — /shop
+
+Create a professional product catalogue.
+
+Product filters:
+- Category.
+- Price range.
+- Size.
+- Colour.
+- Availability.
+- Discount.
+
+Sorting:
+- Latest.
+- Price: Low to High.
+- Price: High to Low.
+- Best Selling.
+- Featured.
+
+Include:
+- Search.
+- Pagination.
+- Responsive product grid.
+- Loading states.
+- Empty search results.
+- Product availability indicators.
+
+Products must come from the database.
+
+### C. Category Pages
+
+Create dynamic category pages.
+
+Examples:
+- /category/mens-clothing
+- /category/shoes
+- /category/accessories
+
+Only display published products belonging to the selected category.
+
+### D. Product Details — /product/[slug]
+
+Every product page must display:
+
+- Product name.
+- Multiple product images.
+- Regular price.
+- Sale price, if applicable.
+- Product description.
+- Available sizes.
+- Available colours.
+- Stock availability.
+- Quantity selector.
+- Add to Cart.
+- Buy Now.
+- Related products.
+
+Product variants must have independent inventory.
+
+For example, a black shoe in size 42 must have a different inventory record from a brown shoe in size 44.
+
+Prevent customers from purchasing unavailable variants or quantities exceeding available stock.
+
+### E. Shopping Cart — /cart
+
+Implement a functional shopping cart.
+
+Features:
+- Add products.
+- Remove products.
+- Update quantities.
+- Select product variants.
+- Display product images.
+- Display individual prices.
+- Apply coupon codes.
+- Calculate subtotal.
+- Display discounts.
+- Display delivery charges when available.
+- Calculate total.
+
+Persist carts appropriately so customers do not lose their shopping selections after refreshing.
+
+### F. Checkout — /checkout
+
+Create a professional checkout experience.
+
+Customer information:
+- Full name.
+- Email address.
+- Phone number.
+- WhatsApp number (optional).
+
+Delivery information:
+- Country.
+- State or province.
+- City.
+- Full delivery address.
+- Postal code, where applicable.
+- Delivery instructions.
+
+Allow both:
+- Guest checkout.
+- Registered customer checkout.
+
+Payment options must include:
+- Paystack.
+- Flutterwave.
+- Bank Transfer.
+- Cash on Delivery.
+
+Only show payment methods that are enabled and properly configured by the administrator.
+
+Delivery charges:
+- Admin can configure delivery fees per order.
+- Admin can specify whether fees are payable on arrival or prepaid.
+- Customers must see the applicable delivery arrangement before confirming an order.
+- Do not automatically assume that every international destination has the same delivery fee.
+
+Display a complete order summary before submission.
+
+Generate a unique order number for every successful order creation.
+
+Prevent duplicate orders caused by repeated submissions.
+
+### G. Customer Account — /account
+
+Provide:
+- Registration.
+- Login.
+- Logout.
+- Forgot password.
+- Password reset.
+- Profile editing.
+- Address management.
+- Order history.
+- Order details.
+- Payment history.
+- Invoice access.
+- Order tracking.
+
+Customers must never be able to access another customer's private records.
+
+### H. Order Tracking — /track-order
+
+Allow customers to track an order using:
+- Order number.
+- Appropriate customer verification information.
+
+Display:
+- Order placed.
+- Payment confirmed.
+- Processing.
+- Ready for dispatch.
+- Shipped.
+- Out for delivery.
+- Delivered.
+
+Also handle:
+- Cancelled.
+- Payment failed.
+- Refunded.
+
+Only expose information appropriate for the customer.
+
+### I. Additional Pages
+
+Create:
+- /about
+- /contact
+- /faq
+- /shipping-policy
+- /return-policy
+- /privacy-policy
+- /terms
+
+All business content should be editable through the Admin Dashboard.
+
+# 6. ADMIN DASHBOARD
+
+The Admin Dashboard is a major component of this project.
+
+Create a separate administration interface with a professional sidebar, top navigation, tables, forms, statistics and responsive layouts.
+
+### Admin routes
+
+- /admin/login
+- /admin/dashboard
+- /admin/products
+- /admin/products/new
+- /admin/categories
+- /admin/orders
+- /admin/customers
+- /admin/payments
+- /admin/deliveries
+- /admin/coupons
+- /admin/reports
+- /admin/content
+- /admin/staff
+- /admin/settings
+- /admin/activity-logs
+
+All administrative routes must be protected.
+
+Unauthenticated users must be redirected to /admin/login.
+
+Customers must not gain administrative access simply by changing their account information.
+
+### A. Admin Dashboard Home
+
+Display the following statistics from actual database records:
+
+- Total Sales.
+- Total Orders.
+- Pending Orders.
+- Completed Orders.
+- Registered Customers.
+- Available Products.
+- Low Stock Products.
+- Successful Transactions.
+- Failed Transactions.
+
+Include:
+- Sales charts.
+- Recent orders.
+- Recent transactions.
+- Best-selling products.
+- Low-stock alerts.
+- Order status overview.
+
+Provide daily, weekly, monthly and yearly filters.
+
+Do not use hardcoded statistics as real business data.
+
+### B. Product Management
+
+Allow authorized administrators to:
+
+- Add products.
+- Edit products.
+- Delete products with safeguards.
+- Publish products.
+- Hide products.
+- Save drafts.
+- Upload multiple product images.
+- Reorder product images.
+- Set product names.
+- Create product descriptions.
+- Set prices.
+- Apply discounts.
+- Assign categories.
+- Add sizes.
+- Add colours.
+- Generate or assign unique SKUs.
+- Manage stock.
+- Set low-stock thresholds.
+- Mark featured products.
+- Mark bestsellers.
+
+Product fields:
+
+1. Product name.
+2. Product slug.
+3. SKU.
+4. Category.
+5. Description.
+6. Regular price.
+7. Sale price.
+8. Images.
+9. Sizes.
+10. Colours.
+11. Variant inventory.
+12. Featured status.
+13. Bestseller status.
+14. Publication status.
+15. Creation date.
+
+Images must be uploaded to Supabase Storage, not stored as temporary browser data.
+
+### C. Category Management
+
+Allow administrators to:
+
+- Create categories.
+- Edit categories.
+- Upload category images.
+- Delete categories safely.
+- Change category display order.
+- Activate or deactivate categories.
+
+Initial categories:
+- Men's Clothing.
+- Shoes.
+- Accessories.
+- New Arrivals.
+- Best Sellers.
+- Special Offers.
+
+### D. Order Management
+
+Display all orders in a searchable and filterable table.
+
+Show:
+- Order number.
+- Customer.
+- Order date.
+- Products.
+- Total.
+- Payment method.
+- Payment status.
+- Order status.
+- Delivery status.
+
+Allow authorized staff to:
+- Open order details.
+- Confirm orders.
+- Accept or reject orders.
+- Update order status.
+- Cancel orders.
+- Record cancellation reasons.
+- Generate invoices.
+- View order history.
+- View payment information.
+- Add internal notes.
+
+Maintain a complete history of important order status changes.
+
+Do not mark an order as paid merely because the customer reaches a payment success redirect page.
+
+### E. Payment Management
+
+Create payment settings for:
+
+**Paystack**
+- Enable/disable.
+- Test/live mode.
+- Public key.
+- Secret key.
+- Webhook configuration.
+- Transaction verification.
+
+**Flutterwave**
+- Enable/disable.
+- Test/live mode.
+- Public key.
+- Secret key.
+- Webhook configuration.
+- Transaction verification.
+
+**Bank Transfer**
+- Enable/disable.
+- Bank name.
+- Account name.
+- Account number.
+- Payment instructions.
+- Manual verification by authorized staff.
+
+**Cash on Delivery**
+- Enable/disable.
+- Delivery instructions.
+- Admin approval options.
+
+Important security requirements:
+
+- Never expose secret keys in frontend JavaScript.
+- Store secrets securely in server-side environment variables or a secure secrets-management system.
+- Verify payment transactions server-side.
+- Validate webhook signatures.
+- Verify transaction references, amounts and currency.
+- Use idempotency to prevent duplicate payment processing.
+- Maintain a transaction history.
+- Support refunds where the payment provider allows them.
+
+The application must not pretend a payment provider is integrated merely because its name appears in a settings page.
+
+If credentials or external configuration are missing, clearly indicate that the provider is not yet ready for live payments.
+
+### F. Delivery Management
+
+Allow authorized administrators to:
+
+- Set delivery charges.
+- Record delivery charges per order.
+- Set prepaid or pay-on-arrival delivery fees.
+- Assign delivery personnel.
+- Record delivery companies.
+- Add tracking numbers.
+- Update estimated delivery dates.
+- Add delivery instructions.
+- Update delivery status.
+- Manage local and international delivery records.
+
+Do not invent courier API integrations.
+
+### G. Customer Management
+
+Provide:
+- Customer directory.
+- Customer search.
+- Customer profile.
+- Contact information.
+- Purchase history.
+- Order history.
+- Account status.
+- Customer account suspension.
+- Customer account reactivation.
+
+Do not expose customer passwords.
+
+### H. Website Content Management
+
+The administrator must be able to edit the public website without modifying application source code.
+
+Editable sections:
+- Homepage hero image.
+- Homepage headline.
+- Homepage description.
+- Promotional banners.
+- Announcement bar.
+- About Us.
+- Contact details.
+- WhatsApp number.
+- Business email.
+- Social media links.
+- FAQs.
+- Shipping information.
+- Privacy policy.
+- Terms and conditions.
+- Return policy.
+
+Changes must be saved in the database and reflected on the live customer website.
+
+### I. Return and Refund Management
+
+Returns must be disabled initially.
+
+Allow Super Admin to:
+- Enable or disable returns.
+- Write return conditions.
+- Set return deadlines.
+- Configure product-specific return conditions.
+- Review return requests.
+- Approve or reject requests.
+- Record refund decisions.
+- Update refund status.
+
+Do not promise automatic refunds when a payment provider does not support the operation.
+
+### J. Coupon Management
+
+Allow:
+- Percentage discounts.
+- Fixed-amount discounts.
+- Coupon codes.
+- Minimum purchase values.
+- Maximum discount values.
+- Usage limits.
+- Per-customer usage limits.
+- Start dates.
+- Expiry dates.
+- Activation/deactivation.
+
+Validate coupons on the server before applying discounts.
+
+### K. Reports and Analytics
+
+Create reports for:
+- Daily sales.
+- Weekly sales.
+- Monthly sales.
+- Yearly sales.
+- Total revenue.
+- Completed orders.
+- Pending orders.
+- Cancelled orders.
+- Best-selling products.
+- Customer purchasing history.
+- Payment transactions.
+- Inventory performance.
+
+Provide CSV export and printable PDF reports.
+
+Clearly distinguish order value, collected payments, refunds and delivery charges. Do not treat unpaid orders as collected revenue.
+
+### L. Staff Management
+
+Create these administrative roles:
+
+**Super Admin**
+- Full control.
+- All settings.
+- Payment configuration.
+- Staff management.
+- Security settings.
+
+**Store Manager**
+- Products.
+- Orders.
+- Customers.
+- Deliveries.
+- Business operations.
+
+**Product Manager**
+- Products.
+- Categories.
+- Prices.
+- Images.
+- Inventory.
+
+**Order Manager**
+- Orders.
+- Payment records.
+- Delivery tracking.
+
+**Content Manager**
+- Homepage.
+- Banners.
+- Website information.
+- FAQs.
+- Promotions.
+
+The Super Admin must be able to:
+- Create staff accounts.
+- Edit staff information.
+- Assign roles.
+- Assign specific permissions.
+- Deactivate accounts.
+- Reactivate accounts.
+- Review staff activities.
+
+Enforce permissions on the backend and database, not just by hiding dashboard buttons.
+
+### M. Settings
+
+Include:
+- Store name.
+- Store logo.
+- Business email.
+- Business phone.
+- WhatsApp number.
+- Business location.
+- Default currency.
+- Time zone.
+- Delivery settings.
+- Payment settings.
+- Stock settings.
+- Order settings.
+- Notification settings.
+- Return settings.
+- Website settings.
+
+Use Africa/Lagos as the default store time zone.
+
+### N. Admin Activity Logs
+
+Record important activities such as:
+- Admin login.
+- Failed login attempts.
+- Product creation.
+- Product editing.
+- Product deletion.
+- Price changes.
+- Stock changes.
+- Order updates.
+- Payment verification.
+- Staff creation.
+- Permission changes.
+- Website content updates.
+- Settings changes.
+
+Include actor, action, affected record and timestamp.
+
+# 7. AUTHENTICATION AND ADMIN SECURITY
+
+This section is mandatory.
+
+There must be no public Admin Registration page.
+
+Implement the first Super Admin account using a secure initialization process.
+
+Requirements:
+
+1. No hardcoded admin email/password.
+2. No default public administrator credentials.
+3. First administrator created through a protected, one-time bootstrap process.
+4. Bootstrap secret supplied through a secure environment variable.
+5. Bootstrap process disabled after successful initialization.
+6. Only an authorized Super Admin can create additional administrators.
+7. Secure login and logout.
+8. Password reset.
+9. Session validation.
+10. Server-side route protection.
+11. Role-based permissions.
+12. Login rate limiting.
+13. Secure cookies and session handling.
+14. Database Row Level Security.
+15. Audit logs.
+16. No exposure of private user records.
+17. No exposure of Supabase service-role keys.
+
+Use Supabase Authentication rather than building an insecure custom password system.
+
+A user must never be able to promote themselves to Super Admin by editing their browser data or sending a modified API request.
+
+# 8. DATABASE DESIGN
+
+Create proper relational database tables.
+
+Required tables:
+
+1. profiles
+2. customers
+3. addresses
+4. categories
+5. products
+6. product_images
+7. product_variants
+8. inventory
+9. carts
+10. cart_items
+11. orders
+12. order_items
+13. payments
+14. deliveries
+15. coupons
+16. coupon_usage
+17. returns
+18. refunds
+19. content
+20. store_settings
+21. staff_permissions
+22. admin_activity_logs
+23. notifications
+24. newsletter_subscribers
+
+Requirements:
+
+- Use UUID primary keys where appropriate.
+- Add foreign-key relationships.
+- Add unique constraints for SKUs and order numbers.
+- Add useful database indexes.
+- Use timestamps.
+- Validate important fields.
+- Use appropriate decimal/numeric types for monetary values.
+- Use transactional operations for order creation and inventory updates.
+- Prevent overselling.
+- Maintain inventory movement history.
+- Use Row Level Security policies.
+- Provide database migrations.
+- Provide safe development seed data separately from production data.
+
+Do not use browser localStorage as the main database.
+
+Local storage may be used for temporary cart persistence, but the final order and business records must be saved to Supabase.
+
+# 9. ORDER AND INVENTORY LOGIC
+
+Implement reliable order processing.
+
+When an order is placed:
+
+1. Validate customer details.
+2. Validate product availability.
+3. Validate selected product variants.
+4. Recalculate all prices on the server.
+5. Validate discount codes.
+6. Calculate order subtotal.
+7. Apply valid discounts.
+8. Record delivery charges.
+9. Calculate total payable.
+10. Create the order and order items transactionally.
+11. Record the selected payment method.
+12. Update inventory safely according to the defined reservation and confirmation policy.
+13. Send order confirmation.
+14. Make the order visible in the Admin Dashboard.
+
+Prevent:
+- Duplicate orders.
+- Duplicate payment records.
+- Overselling.
+- Client-side price manipulation.
+- Invalid coupons.
+- Unauthorized order access.
+
+Use appropriate inventory reservation expiry for unpaid online orders.
+
+# 10. NOTIFICATIONS AND EMAIL
+
+Create a notification system.
+
+Customer notifications:
+- Account registration.
+- Order confirmation.
+- Payment confirmation.
+- Order processing.
+- Shipment notification.
+- Delivery update.
+- Cancellation.
+- Refund update.
+
+Admin notifications:
+- New order.
+- Successful payment.
+- Failed payment.
+- Low-stock warning.
+- New customer registration.
+- Refund request.
+
+Use a properly configured email service through secure server-side integration.
+
+Do not claim email delivery works until provider credentials have been configured and delivery has been tested.
+
+# 11. PAYMENT AND CURRENCY REQUIREMENTS
+
+NGN is the default store currency.
+
+All monetary values must be stored consistently in the database, using integer minor units where appropriate.
+
+For example:
+₦25,000 must be handled as 2,500,000 kobo when required by the payment provider.
+
+Implement payment gateway-specific currency and amount requirements correctly.
+
+Do not assume that international delivery means every payment gateway supports every foreign currency.
+
+For each online payment:
+- Create a transaction reference.
+- Initiate payment server-side.
+- Redirect to the provider when necessary.
+- Verify the transaction server-side.
+- Validate the amount and currency.
+- Update the payment and order records.
+- Process webhook events safely.
+- Handle failed and cancelled payments.
+
+For bank transfers, allow authorized staff to verify the received payment before marking an order as paid.
+
+For cash on delivery, keep payment status separate from order status.
+
+# 12. SEARCH ENGINE OPTIMIZATION
+
+Implement:
+- SEO-friendly URLs.
+- Unique product page titles.
+- Meta descriptions.
+- Product image alt text.
+- Canonical URLs.
+- XML sitemap.
+- Robots.txt.
+- Open Graph metadata.
+- Structured product data.
+- Breadcrumbs.
+- Search-friendly category pages.
+
+Do not generate misleading structured data or fake product reviews.
+
+# 13. PERFORMANCE AND ACCESSIBILITY
+
+Requirements:
+- Responsive desktop layout.
+- Responsive tablet layout.
+- Responsive mobile layout.
+- Optimized images.
+- Lazy loading.
+- Good page loading performance.
+- Accessible buttons and forms.
+- Proper labels.
+- Keyboard navigation.
+- Clear error messages.
+- Loading indicators.
+- Empty states.
+- Error boundaries.
+- 404 page.
+- Friendly confirmation messages.
+
+The Admin Dashboard must also work comfortably on mobile devices.
+
+# 14. REQUIRED APPLICATION ROUTES
+
+PUBLIC ROUTES:
+
+/
+ /shop
+ /category/[slug]
+ /product/[slug]
+ /cart
+ /checkout
+ /account
+ /account/login
+ /account/register
+ /account/orders
+ /account/addresses
+ /track-order
+ /about
+ /contact
+ /faq
+ /shipping-policy
+ /return-policy
+ /privacy-policy
+ /terms
+
+ADMIN ROUTES:
+
+/admin/login
+/admin/dashboard
+/admin/products
+/admin/products/new
+/admin/categories
+/admin/orders
+/admin/customers
+/admin/payments
+/admin/deliveries
+/admin/coupons
+/admin/reports
+/admin/content
+/admin/staff
+/admin/settings
+/admin/activity-logs
+
+Use a consistent routing structure.
+
+Every listed route must either be implemented or explicitly documented as pending. Do not create empty pages that appear complete.
+
+# 15. TESTING REQUIREMENTS
+
+Create automated tests for important business logic and security rules.
+
+Test:
+
+- Customer registration.
+- Customer login.
+- Admin login.
+- Admin route protection.
+- Staff permissions.
+- Product creation.
+- Product editing.
+- Product publishing.
+- Product image uploads.
+- Category management.
+- Inventory updates.
+- Product variants.
+- Shopping cart.
+- Checkout.
+- Coupon validation.
+- Order creation.
+- Payment verification.
+- Webhook processing.
+- Delivery updates.
+- Customer order tracking.
+- Reports.
+- Database access policies.
+
+Perform an end-to-end test of the customer ordering process.
+
+Use payment gateway test mode before live payment activation.
+
+Do not claim tests have passed unless they have actually been executed.
+
+# 16. VERCEL DEPLOYMENT
+
+Prepare the application for Vercel deployment.
+
+Provide:
+
+- Correct Next.js production configuration.
+- Required environment variables.
+- Supabase connection configuration.
+- Database migration instructions.
+- Storage bucket configuration.
+- Authentication redirect URLs.
+- Payment gateway environment variables.
+- Webhook URLs.
+- Production build commands.
+- Deployment instructions.
+
+Create an `.env.example` file containing variable names and placeholder values only.
+
+Required environment variables should include appropriate entries for:
+
+- NEXT_PUBLIC_SUPABASE_URL
+- NEXT_PUBLIC_SUPABASE_ANON_KEY
+- SUPABASE_SERVICE_ROLE_KEY
+- ADMIN_BOOTSTRAP_SECRET
+- PAYSTACK_PUBLIC_KEY
+- PAYSTACK_SECRET_KEY
+- FLUTTERWAVE_PUBLIC_KEY
+- FLUTTERWAVE_SECRET_KEY
+- EMAIL_PROVIDER_API_KEY
+- APP_URL
+
+Use the exact variable names consistently throughout the application.
+
+Never commit actual secret values to GitHub.
+
+The production admin login must work on the Vercel domain, not only inside Google AI Studio preview.
+
+Make sure authentication callbacks, cookies, redirects and server-side environment variables are configured correctly.
+
+# 17. DEVELOPMENT RULES
+
+Follow these instructions strictly:
+
+1. Build a complete working application, not a visual prototype.
+2. Use reusable components.
+3. Keep customer and admin interfaces separate.
+4. Connect both interfaces to the same production database.
+5. Implement secure authentication from the beginning.
+6. Use proper database migrations.
+7. Implement real CRUD operations.
+8. Use actual persistent database records.
+9. Avoid fake statistics.
+10. Avoid fake payment confirmations.
+11. Do not create buttons that do nothing.
+12. Do not leave forms without submission logic.
+13. Do not expose secret keys.
+14. Do not use hardcoded administrator credentials.
+15. Do not create public admin registration.
+16. Do not invent business information.
+17. Do not silently replace working components with mockups.
+18. Do not remove features to make development easier.
+19. Do not claim deployment or integrations are complete without testing.
+20. Document every external service requiring configuration.
+
+If the project is too large to generate in one operation, build it in clearly defined development stages while maintaining the same architecture, database schema and design system.
+
+Do not generate a disconnected collection of pages.
+
+# 18. FINAL DELIVERY REQUIREMENTS
+
+At completion, provide:
+
+1. Complete application source code.
+2. Complete customer-facing website.
+3. Complete Admin Dashboard.
+4. Database schema and migration files.
+5. Supabase authentication configuration.
+6. Supabase storage configuration.
+7. Row Level Security policies.
+8. Secure Super Admin initialization instructions.
+9. Payment integration code.
+10. Email integration code.
+11. `.env.example`.
+12. Vercel deployment instructions.
+13. Testing instructions.
+14. Administrator user guide.
+15. Known limitations and outstanding configuration requirements.
+
+Create a clean and organized project folder suitable for GitHub and Vercel deployment.
+
+# 19. FINAL PROJECT OBJECTIVE
+
+The finished DIAMOND STORE must operate as a unified online fashion business.
+
+A customer should be able to visit the website, browse products, select sizes and colours, add items to the cart, place an order, make payment, and track delivery.
+
+The Super Admin should be able to manage products, categories, prices, stock, customers, orders, payments, deliveries, promotions, website content, reports and staff from one secure dashboard.
+
+When the administrator adds a new product, it should automatically become available on the public website when published.
+
+When a customer places an order, it should automatically appear in the Admin Dashboard.
+
+When payment is verified, the payment and order records must update correctly.
+
+When the administrator changes website content, the public website must reflect those changes.
+
+The customer website and Admin Dashboard must remain synchronized through the same production database.
+
+**Build DIAMOND STORE as a professional, secure, scalable and maintainable e-commerce platform that can support a real business in Nigeria and serve international customers.**
+
+Begin by establishing the project architecture, database schema, authentication system and design foundation. Then implement and test each module systematically.
+
+Do not stop after generating the homepage. The complete application is the objective.

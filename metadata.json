@@ -1,0 +1,6 @@
+{
+  "name": "Diamond Store",
+  "description": "Premium Nigerian men's fashion, handcrafted footwear, and curated accessories storefront with integrated administrative management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
